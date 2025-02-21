@@ -10,29 +10,15 @@ import {
   Container,
   Typography,
 } from "@mui/material";
+import { fetchCrimes } from "../../database_functions";
 
 function Crimes() {
   const [crimes, setCrimes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch data on component mount
   useEffect(() => {
-    fetch("http://localhost:8080/crime")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCrimes(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+    fetchCrimes(setCrimes, setLoading, setError);
   }, []);
 
   if (loading) {

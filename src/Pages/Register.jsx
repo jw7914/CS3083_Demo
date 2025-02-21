@@ -9,19 +9,43 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
+import { registerUser } from "../../database_functions";
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [officerId, setOfficerId] = useState("");
+  const [badgeNumber, setBadgeNumber] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleRegister = async () => {
-    if (!username || !password || !officerId) {
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    if (!username || !password || !badgeNumber) {
       setAlertMessage("Please fill in all the fields.");
       return;
     }
+
+    setAlertMessage("");
+
+    const userData = {
+      username: username,
+      password: password,
+      badge_number: badgeNumber,
+    };
+
+    setLoading(true);
+
+    const success = await registerUser(userData, setLoading, setAlertMessage);
+
+    setLoading(false);
+
+    if (success) {
+      setAlertMessage("Registration successful!");
+    }
+    setUsername("");
+    setPassword("");
+    setBadgeNumber("");
   };
 
   return (
@@ -40,7 +64,7 @@ function RegisterPage() {
             Officer Register
           </Typography>
 
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleRegister}>
             <Grid container spacing={2} direction="column">
               {/* Username */}
               <Grid item>
@@ -50,7 +74,6 @@ function RegisterPage() {
                   variant="outlined"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  required
                 />
               </Grid>
 
@@ -63,7 +86,6 @@ function RegisterPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
               </Grid>
 
@@ -73,9 +95,8 @@ function RegisterPage() {
                   fullWidth
                   label="Officer ID"
                   variant="outlined"
-                  value={officerId}
-                  onChange={(e) => setOfficerId(e.target.value)}
-                  required
+                  value={badgeNumber}
+                  onChange={(e) => setBadgeNumber(e.target.value)}
                 />
               </Grid>
 
@@ -89,11 +110,11 @@ function RegisterPage() {
                     borderRadius: "10px",
                     backgroundColor: "purple",
                   }}
-                  onClick={handleRegister}
-                  disabled={loading} // Disable button while loading
+                  type="submit"
+                  disabled={loading}
                 >
                   {loading ? (
-                    <CircularProgress size={24} color="secondary" /> // Show loading spinner
+                    <CircularProgress size={30} color="secondary" />
                   ) : (
                     "Register"
                   )}
@@ -107,7 +128,7 @@ function RegisterPage() {
             <Typography
               sx={{
                 mt: 2,
-                color: "red",
+                color: alertMessage.includes("successful") ? "green" : "red",
                 fontSize: "16px",
                 textAlign: "center",
               }}

@@ -42,9 +42,13 @@
     ```bash
     npm install express
     ```
-    - cors (used to allow resource sharing from server to frontend)
+    - cors (used to allow CORS (cross origin resource sharing) from server to frontend)
     ```bash
     npm install cors
+    ```
+    - axios - optional (simplifies making requests to your backend)
+    ```bash
+    npm install axios
     ```
 
 # Removing Default Files
