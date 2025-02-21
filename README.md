@@ -35,6 +35,35 @@
     npm install express
     ```
 
+# Removing Default Files
+
+- Delete `App.css`.
+- Delete `index.css`.
+- Remove the contents inside the `App()` function.
+- Customize `index.html`:
+
+  - Update the favicon:
+
+    ```html
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    ```
+
+    - Change `href="/vite.svg"` to the path of your logo/image to appear in the browser.
+      - Ex:
+        ```html
+        <link rel="icon" type="image/png" href="src/assets/databases.png" />
+        ```
+
+  - Update the page title:
+    ```html
+    <title>Vite + React</title>
+    ```
+    - Change the title to your preferred name.
+      - Ex:
+      ```html
+      <title>CS3083 Demo</title>
+      ```
+
 # Running code
 
 - Start both frontend and server at the same time
