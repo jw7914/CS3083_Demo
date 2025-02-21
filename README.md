@@ -1,7 +1,15 @@
 # Prerequisites
 
 - Node.js [Install Here](https://nodejs.org/en/download)
+  - Verify by running in terminal
+    ```bash
+    node -v
+    ```
 - npm (preferred) or equivalent Javascript package manager
+  - Verify by running in terminal
+    ```bash
+    npm -v
+    ```
 
 # Setup Environment
 
@@ -34,11 +42,15 @@
     ```bash
     npm install express
     ```
+    - cors (used to allow resource sharing from server to frontend)
+    ```bash
+    npm install cors
+    ```
 
 # Removing Default Files
 
-- Delete `App.css`.
-- Delete `index.css`.
+- Delete `App.css` and update App.jsx to remove imports.
+- Delete `index.css` and update Main.jsx to remove imports.
 - Remove the contents inside the `App()` function.
 - Customize `index.html`:
 
@@ -66,6 +78,6 @@
 
 # Running code
 
-- Start both frontend and server at the same time
+- Start both frontend and server at the same time in different terminals
   - npm run dev (to run vite for frontend)
   - node server.js (to start up backend)
