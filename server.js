@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import mysql from "mysql2";
 import cors from "cors";
 
@@ -14,6 +14,7 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) {
     console.error("Database connection failed:", err);
+    process.exit(1);
   } else {
     console.log("Connected to MySQL database!");
   }
@@ -22,7 +23,8 @@ connection.connect((err) => {
 // Initialize an Express app
 const app = express();
 // Allow resource sharing (allow calls to backend from certain urls)
-app.use(cors());
+// app.use(cors()); -> Allows all lins
+app.use(cors("localhost:5173")); //Frontend URL
 
 // API endpoint to fetch crime data
 app.get("/crime", (request, response) => {
