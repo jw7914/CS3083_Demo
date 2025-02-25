@@ -21,20 +21,17 @@ export const fetchCrimes = async (setCrimes, setLoading, setError) => {
 
 export const registerUser = async (userData, setLoading, setError) => {
   try {
-    setError(""); // Clear previous error
-    setLoading(true); // Set loading state
+    setError("");
+    setLoading(true);
 
     const response = await backend.post("/register", userData);
 
-    setLoading(false); // Stop loading
-
-    // Check if the response indicates failure
+    setLoading(false);
     if (response.data[0] === false) {
-      setError(response.data[1]); // Set the error message from the backend
+      setError(response.data[1]);
       return false;
     }
 
-    // Registration successful
     return true;
   } catch (error) {
     console.error("Error occurred:", error);

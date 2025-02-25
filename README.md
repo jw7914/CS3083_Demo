@@ -13,6 +13,7 @@
 
 # Setup Environment
 
+- React Approach:
 - Vite will be used as the JavaScript build tool (`npx create-react-app` can be used too).
 
   - Create a project using:
@@ -49,6 +50,21 @@
     - axios - optional (simplifies making requests to your backend)
     ```bash
     npm install axios
+    ```
+
+- Templating Approach:
+  - Packages to install:
+    - express (used to create a server)
+    ```bash
+    npm install express
+    ```
+    - mysql2 (used to query the database with Javascript)
+    ```bash
+    npm install mysql2
+    ```
+    - hbs (used to template - can render page dynamically based on data sent from server)
+    ```bash
+    npm install mysql2
     ```
 
 # Removing Default Files

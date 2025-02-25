@@ -34,11 +34,7 @@ function RegisterPage() {
       badge_number: badgeNumber,
     };
 
-    setLoading(true);
-
     const success = await registerUser(userData, setLoading, setAlertMessage);
-
-    setLoading(false);
 
     if (success) {
       setAlertMessage("Registration successful!");
