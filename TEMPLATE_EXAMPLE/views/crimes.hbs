@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Crime Data</h2>
+
+  {{#if crimes.length}}
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Crime Code</th>
+          <th>Classification</th>
+          <th>Crime Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each crimes}}
+          <tr>
+            <td>{{this.crime_code}}</td>
+            <td>{{this.classification}}</td>
+            <td>{{this.crime_description}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="alert alert-warning text-center">
+      No crime data available.
+    </div>
+  {{/if}}
+</div>
