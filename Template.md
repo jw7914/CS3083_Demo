@@ -11,5 +11,5 @@
   ```
   - hbs (used to template - can render page dynamically based on data sent from server)
   ```bash
-  npm install mysql2
+  npm install hbs
   ```
